@@ -1,11 +1,10 @@
-import { LoginPage } from "./auth/pages/LoginPage";
-import { RegisterPage } from "./auth/pages/RegisterPage";
+import { RegisterPage, LoginPage } from "./auth/pages/"
 
 export function App() {
   return (
     <>
-    {/* <RegisterPage /> */}
-    <LoginPage></LoginPage>
-    </>
+    <RegisterPage /> 
+    {/* <LoginPage /> */}
+    </> 
   )
 }

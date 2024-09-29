@@ -5,11 +5,11 @@ export function RegisterPage() {
     <>
       <Navbar />
 
-      <main className="flex flex-col md:flex-row h-screen overflow-hidden">
+      <main className="flex flex-col md:flex-row h-screen">
         <div className="flex w-full">
           {/* Sección izquierda con la imagen */}
           <section className="hidden md:flex md:w-1/2 h-full">
-            <div className="w-full h-full flex items-center justify-center overflow-hidden">
+            <div className="w-full h-full flex items-center justify-center ">
               <img
                 src="./NikeRegister.jpeg"
                 alt="Nike Image Register Page"
@@ -19,13 +19,13 @@ export function RegisterPage() {
           </section>
 
           {/* Sección derecha para el formulario */}
-          <section className="w-full md:w-1/2 bg-white flex flex-col justify-center items-center p-4">
-            <h1 className="text-8xl font-bold mb-4">First Time?</h1>
-            <p className="text-4xl font-extralight mb-6">
+          <section className="w-full md:w-1/2 bg-white flex flex-col justify-center items-center md:p-4 mt-20">
+            <h1 className="lg:text-8xl mg:text-6xl text-4xl font-bold mb-4">First Time?</h1>
+            <p className="text-xl md:text-2xl lg:text-4xl font-extralight mb-6">
               Register to discover your favorites
             </p>
 
-            <form className="flex flex-col w-96 max-w-md mt-16">
+            <form className="flex flex-col w-full p-4 md:mx-auto max-w-lg md:h-screen">
               <label className="font-semibold mb-2">Name</label>
               <input
                 type="text"
@@ -54,10 +54,10 @@ export function RegisterPage() {
                 placeholder="********"
               />
 
-              <button className="bg-[#EA454C] text-white p-3 rounded-lg mb-3">
+              <button className="bg-[#EA454C] text-white p-3 rounded-lg mb-3 font-bold">
                 Register
               </button>
-              <button className="bg-[#6B6B6B] text-white p-3 rounded-lg">
+              <button className="bg-[#6B6B6B] text-white p-3 rounded-lg font-bold">
                 Register with Google
               </button>
             </form>
