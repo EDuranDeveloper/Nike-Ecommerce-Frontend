@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { useForm } from 'react-hook-form';
 
@@ -5,6 +6,12 @@ export function RegisterPage() {
 
 
   const { register, handleSubmit, formState: {errors}, watch, formState } = useForm()
+
+  const navigate = useNavigate()
+
+  const onAlreadyHaveAccount = () => {
+    navigate("/auth/login")
+  }
 
   const onSubmit = handleSubmit((data) => {
     console.log(formState);
@@ -21,7 +28,7 @@ export function RegisterPage() {
           <section className="hidden md:flex md:w-1/2 h-full">
             <div className="w-full h-full flex items-center justify-center ">
               <img
-                src="../public/NikeRegister.jpeg"
+                src="../NikeRegister.jpeg"
                 alt="Nike Image Register Page"
                 className="w-full h-full"
               />
@@ -29,13 +36,13 @@ export function RegisterPage() {
           </section>
 
           {/* Sección derecha para el formulario */}
-          <section className="w-full md:w-1/2 bg-white flex flex-col justify-center items-center md:p-4 mt-20">
-            <h1 className="lg:text-8xl mg:text-5xl text-4xl font-bold mb-4">First Time?</h1>
-            <p className="text-xl md:text-2xl lg:text-4xl font-extralight mb-6">
+          <section className="md:w-1/2 bg-white flex flex-col justify-center items-center md:p-4 mt-20">
+            <h1 className="lg:text-8xl mg:text-5xl text-4xl font-bold mb-4 mt-4">Ready to start?</h1>
+            <p className="text-xl md:text-2xl lg:text-4xl font-extralight mb-3">
               Register to discover your favorites
             </p>
 
-            <form className="flex flex-col w-full p-4 md:mx-auto max-w-lg md:h-screen" onSubmit={ onSubmit }>
+            <form className="flex flex-col w-full p-4 md:mx-auto max-w-lg " onSubmit={ onSubmit }>
               <label className="font-semibold mb-2">Name</label>
               <input
                 type="text"
@@ -114,13 +121,17 @@ export function RegisterPage() {
                 errors.confirmPassword && <span className="text-red-600 text-xs mb-4">{ errors.confirmPassword.message }</span> 
               }
 
-              <button className="bg-[#EA454C] text-white p-3 rounded-lg mb-3 font-bold">
+              <button className="bg-[#EA454C] text-white p-3 rounded-lg mb-3 font-semibold">
                 Register
               </button>
-              <button className="bg-[#6B6B6B] text-white p-3 rounded-lg font-bold">
+              <button className="bg-[#6B6B6B] text-white p-3 rounded-lg font-semibold">
                 Register with Google
               </button>
             </form>
+            <div className="flex justify-between gap-36 decoration underline">
+              <span className="cursor-pointer" onClick={ onAlreadyHaveAccount }>Already have account?</span>
+              <span>Forget your account?</span>
+            </div>
           </section>
         </div>
       </main>

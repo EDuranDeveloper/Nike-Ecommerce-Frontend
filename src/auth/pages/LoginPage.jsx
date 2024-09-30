@@ -1,9 +1,17 @@
 import { useForm } from "react-hook-form";
 import { Navbar } from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 export function LoginPage() {
 
+  const navigate = useNavigate()
+
   const { register, handleSubmit, formState: {errors} } = useForm()
+
+  
+  const onGetAccount = () => {
+    navigate("/auth/register")
+  }
 
   const onSubmit = handleSubmit((data) => {
     console.log(formState);
@@ -69,12 +77,16 @@ export function LoginPage() {
                 Sign In with Google
               </button>
             </form>
+            <div className="flex justify-between gap-36 m-2 decoration underline">
+              <span className="cursor-pointer" onClick={ onGetAccount }>Not get a account?</span>
+              <span>Forget your account?</span>
+            </div>
           </section>
 
           {/* Sección derecha */}
           <section className="hidden md:flex md:w-1/2 h-full items-center justify-center overflow-hidden">
             <img
-              src="../public/NikeLogin.jpeg"
+              src="../NikeLogin2.jpg"
               alt="Nike Image Login Page"
               className="object-cover w-full h-full rounded-lg"
             />
