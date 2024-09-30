@@ -1,10 +1,16 @@
-import { RegisterPage, LoginPage } from "./auth/pages/"
+import { BrowserRouter } from "react-router-dom";
+import { store } from './store';
+import { AppRouter } from './router';
+import { Provider } from 'react-redux';
 
 export function App() {
+
+
   return (
-    <>
-    <RegisterPage /> 
-    {/* <LoginPage /> */}
-    </> 
+    <Provider store={store}>
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
+    </Provider>
   )
 }

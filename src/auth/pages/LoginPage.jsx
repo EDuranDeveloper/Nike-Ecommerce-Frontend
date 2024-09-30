@@ -1,6 +1,14 @@
+import { useForm } from "react-hook-form";
 import { Navbar } from "../components/Navbar";
 
 export function LoginPage() {
+
+  const { register, handleSubmit, formState: {errors} } = useForm()
+
+  const onSubmit = handleSubmit((data) => {
+    console.log(formState);
+  })
+
   return (
     <>
       <Navbar />
@@ -16,25 +24,48 @@ export function LoginPage() {
               Please enter your details.
             </p>
 
-            <form className="flex flex-col w-full max-w-md mt-8 mx-auto">
+            <form onSubmit={ onSubmit } className="flex flex-col w-full max-w-md mt-8 mx-auto">
               <label className="font-semibold mb-2">Email</label>
               <input
                 type="text"
-                className="p-3 mb-4 rounded-lg border border-gray-300"
+                className={`p-3 rounded-lg border border-gray-400 ${errors.password?.message ? 'mb-2' : 'mb-4' }  `}
                 placeholder="Enter your email"
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: "Email is required"
+                  },
+                  pattern: {
+                    value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                    message: "The mail is invalid"
+                  }
+                })}
               />
+              {
+                errors.email && <span className="text-red-600 mb-1 text-xs">{ errors.email.message }</span> 
+              }
 
               <label className="text-black font-semibold mb-2">Password</label>
               <input
                 type="password"
-                className="p-2 mb-6 rounded-lg border border-gray-300"
+                className={`p-3 rounded-lg border border-gray-400 ${errors.password?.message ? 'mb-2' : 'mb-4' }  `}
                 placeholder="********"
+                {...register("password", {
+                  required: {
+                    value: true,
+                    message: "Password is required"
+                  }
+                })}
               />
 
-              <button className="bg-[#EA454C] text-white p-3 rounded-lg mb-3">
+              {
+                errors.password && <span className="text-red-600 mb-4 text-xs">{ errors.password.message }</span> 
+              }
+
+              <button className="bg-[#EA454C] text-white p-3 rounded-lg mb-3 font-semibold">
                 Sign In
               </button>
-              <button className="bg-[#6B6B6B] text-white p-3 rounded-lg">
+              <button className="bg-[#6B6B6B] text-white p-3 rounded-lg font-semibold">
                 Sign In with Google
               </button>
             </form>
@@ -43,7 +74,7 @@ export function LoginPage() {
           {/* Sección derecha */}
           <section className="hidden md:flex md:w-1/2 h-full items-center justify-center overflow-hidden">
             <img
-              src="./NikeLogin.jpeg"
+              src="../public/NikeLogin.jpeg"
               alt="Nike Image Login Page"
               className="object-cover w-full h-full rounded-lg"
             />
