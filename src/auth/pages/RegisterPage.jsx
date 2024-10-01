@@ -23,10 +23,10 @@ export function RegisterPage() {
       <Navbar />
 
       <main className="flex flex-col md:flex-row h-screen">
-        <div className="flex w-full">
+        <div className="flex w-full justify-center items-center">
           {/* Sección izquierda con la imagen */}
           <section className="hidden md:flex md:w-1/2 h-full">
-            <div className="w-full h-full flex items-center justify-center ">
+            <div className="w-full h-full flex justify-center items-center">
               <img
                 src="../NikeRegister.jpeg"
                 alt="Nike Image Register Page"
@@ -37,10 +37,10 @@ export function RegisterPage() {
 
           {/* Sección derecha para el formulario */}
           <section className="md:w-1/2 bg-white flex flex-col justify-center items-center md:p-4 mt-20">
-            <h1 className="lg:text-8xl mg:text-5xl text-4xl font-bold mb-4 mt-4">Ready to start?</h1>
-            <p className="text-xl md:text-2xl lg:text-4xl font-extralight mb-3">
+            <h1 className="lg:text-7xl mg:text-5xl text-4xl font-bold mb-4 mt-4">Ready to start?</h1>
+            <h2 className="text-xl md:text-2xl lg:text-4xl font-extralight mb-3">
               Register to discover your favorites
-            </p>
+            </h2>
 
             <form className="flex flex-col w-full p-4 md:mx-auto max-w-lg " onSubmit={ onSubmit }>
               <label className="font-semibold mb-2">Name</label>
@@ -128,7 +128,7 @@ export function RegisterPage() {
                 Register with Google
               </button>
             </form>
-            <div className="flex justify-between gap-36 decoration underline">
+            <div className="flex justify-between gap-36 decoration underline p-2">
               <span className="cursor-pointer" onClick={ onAlreadyHaveAccount }>Already have account?</span>
               <span>Forget your account?</span>
             </div>

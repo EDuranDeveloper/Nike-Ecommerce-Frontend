@@ -5,7 +5,6 @@ export function LandingPage() {
     <>
       <Navbar />
 
-      <h1>Landing</h1>
     
     
     </>
