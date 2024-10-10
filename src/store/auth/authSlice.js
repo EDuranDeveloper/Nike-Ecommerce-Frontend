@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const authSlice = createSlice({
-    name: 'name',
+    name: 'auth',
     initialState: {
         status: "checking",
         user: {},
@@ -27,4 +27,4 @@ export const authSlice = createSlice({
     }
 });
 
-export const { onChecking, onLogin, onLogout } = authSlice.actions;
+export const { onChecking, onLogin, onLogout  } = authSlice.actions;

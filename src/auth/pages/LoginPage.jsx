@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Navbar } from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../hooks/useAuthStore";
 
 export function LoginPage() {
 
@@ -8,13 +9,17 @@ export function LoginPage() {
 
   const { register, handleSubmit, formState: {errors} } = useForm()
 
+  const { startLogin } = useAuthStore()
   
   const onGetAccount = () => {
     navigate("/auth/register")
   }
 
   const onSubmit = handleSubmit((data) => {
-    console.log(formState);
+    const {email, password} = data
+    startLogin({ email, password })
+    
+
   })
 
   return (
