@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import { Navbar } from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../hooks/useAuthStore";
+import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 export function LoginPage() {
 
@@ -9,18 +11,29 @@ export function LoginPage() {
 
   const { register, handleSubmit, formState: {errors} } = useForm()
 
-  const { startLogin } = useAuthStore()
+  const { startLogin, errorMessage } = useAuthStore()
   
   const onGetAccount = () => {
     navigate("/auth/register")
   }
 
   const onSubmit = handleSubmit((data) => {
+    
     const {email, password} = data
+
     startLogin({ email, password })
     
 
   })
+
+  useEffect(() => {
+    if (errorMessage !== undefined) {
+      Swal.fire("Not login", errorMessage, "error")
+    }
+  
+   
+  }, [errorMessage])
+  
 
   return (
     <>
