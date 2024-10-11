@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../hooks/useAuthStore";
 
 export function Navbar({ navBarPad, bgColor = "transparent" }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onClickLogo = () => {
-    navigate("/")
-  }
+    navigate("/");
+  };
 
   const onClickAccount = () => {
-    navigate("/auth/login")
-  }
+    navigate("/auth/login");
+  };
 
+  const { user } = useAuthStore();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -24,7 +26,9 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
   };
 
   return (
-    <header className={`bg-${bgColor} fixed md:top-0 md:left-0 md:right-0 md:z-50 mx-4 py-${ navBarPad } `}>
+    <header
+      className={`bg-${bgColor} fixed top-0 left-0 right-0 z-50 mx-4 py-${navBarPad}`}
+    >
       <nav className="relative">
         {/* Botón de menú hamburguesa para móviles */}
         <div className="md:hidden flex items-center justify-between p-3">
@@ -67,40 +71,44 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
         <ul
           className={`${
             isMenuOpen ? "block" : "hidden"
-          } md:flex items-center justify-between font-semibold px-4 text-[#333333] bg-white md:bg-transparent`}
+          } md:flex items-center justify-between font-semibold text-[#333333] bg-white md:bg-transparent md:static md:flex-row flex-col absolute left-0 w-full md:w-auto md:space-x-8 top-full mt-2 md:mt-0 px-4 py-2 md:p-0 transition-all duration-300 ease-in-out`}
         >
           {/* Sección de la imagen (start) */}
           <li className="p-2">
             <img
-              src="../nikelogo.png" // Reemplaza con la URL de tu logo o imagen
+              src="../nikelogo.png"
               alt="Logo"
-              className="size-20 cursor-pointer"
-              onClick={ onClickLogo }
+              className="size-12 cursor-pointer"
+              onClick={onClickLogo}
             />
           </li>
 
           {/* Sección del menú (center) */}
-          <div className="flex gap-32 text-xl justify-center text-black font-semibold cursor-pointer">
-            <li onClick={ closeMenu }>
+          <div
+            className={`flex flex-col md:flex-row md:gap-8 text-lg justify-center text-black font-semibold cursor-pointer pl-${
+              user.name && "40"
+            }`}
+          >
+            <li className="p-2 md:p-0" onClick={closeMenu} >
               Women
             </li>
-            <li onClick={ closeMenu }>
+            <li className="p-2 md:p-0" onClick={closeMenu}>
               Men
             </li>
-            <li onClick={ closeMenu }>
+            <li className="p-2 md:p-0" onClick={closeMenu}>
               Kids
             </li>
-            <li onClick={ closeMenu }>
+            <li className="p-2 md:p-0" onClick={closeMenu}>
               Collections
             </li>
           </div>
 
           {/* Sección de los íconos (end) */}
-          <div className="flex">
-            <li className="p-2">
-            <svg
+          <div className="flex space-x-4 p-2 bg-white rounded">
+            <li>
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="size-10 cursor-pointer"
+                className="h-6 w-6 cursor-pointer"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -111,11 +119,11 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
                 />
               </svg>
             </li>
-            <li className="p-2" onClick={closeMenu}>
+            <li onClick={closeMenu}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="size-10 cursor-pointer"
-                onClick={ onClickAccount }
+                className="h-6 w-6 cursor-pointer"
+                onClick={onClickAccount}
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -126,6 +134,11 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
                 />
               </svg>
             </li>
+              <li>
+                {user.name ? (
+                  <p>{`Hello, ${user.name.split(" ")[0].trim().slice(0, 5)}...!`}</p> 
+                ) : <p></p> }
+              </li>
           </div>
         </ul>
       </nav>

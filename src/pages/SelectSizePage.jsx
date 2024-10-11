@@ -34,7 +34,7 @@ export function SelectSizePage() {
  
 
   return (
-    <div className="h-screen bg-white flex flex-col p-5 overflow-hidden">
+    <div className="h-screen bg-[#E8E8E8] flex flex-col p-5 overflow-hidden">
       <Navbar navBarPad={"4"} />
 
       <div className="flex-grow w-full mx-auto bg-[#E8E8E8] rounded-lg shadow-lg flex flex-col px-6">

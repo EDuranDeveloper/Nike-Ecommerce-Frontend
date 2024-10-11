@@ -17,9 +17,9 @@ const products = [
 
 const ProductCollectionPage = () => {
   return (
-    <div className='bg-[#E8E8E8] rounded-md py-6 '>
-      <Navbar navBarPad={"4"} bgColor={"white"}/>
-    <div className="px-4 py-8 bg-white mx-4 rounded-md">
+    <div className='bg-[#E8E8E8] rounded-md'>
+      <Navbar navBarPad={"2"} bgColor={"white"}/>
+    <div className="px-4 py-8 bg-white rounded-md">
       <h1 className="text-2xl font-bold mt-24 mb-6">COLLECTION</h1>
       <div className="flex flex-col md:flex-row">
         <Sidebar />
@@ -28,7 +28,7 @@ const ProductCollectionPage = () => {
             <p className="text-gray-600">{products.length} Products</p>
             <button className="text-blue-600 hover:underline">Highest price</button>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
