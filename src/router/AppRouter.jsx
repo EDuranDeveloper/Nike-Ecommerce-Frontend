@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import { LoginPage, RegisterPage } from '../auth/pages';
 import { LandingPage } from '../pages/LandingPage';
+import { SelectSizePage } from "../pages/SelectSizePage";
 
 
 
@@ -23,7 +24,8 @@ export function AppRouter() {
                 <Route path="/" element={ <LandingPage /> } />
                 <Route path="/auth/login" element={<LoginPage />}/>
                 <Route path="/auth/register" element={<RegisterPage />}/>
-
+                <Route path="/size" element={<SelectSizePage />}/>
+              
       </Routes>
     
     </>

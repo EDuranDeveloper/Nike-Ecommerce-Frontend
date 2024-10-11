@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export function Navbar() {
+export function Navbar({ navBarPad }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigate = useNavigate()
@@ -24,7 +24,7 @@ export function Navbar() {
   };
 
   return (
-    <header className="bg-transparent fixed md:top-0 md:left-0 md:right-0 md:z-50">
+    <header className={`bg-transparent fixed md:top-0 md:left-0 md:right-0 md:z-50 p-${ navBarPad }`}>
       <nav className="relative">
         {/* Botón de menú hamburguesa para móviles */}
         <div className="md:hidden flex items-center justify-between p-3">
@@ -80,7 +80,7 @@ export function Navbar() {
           </li>
 
           {/* Sección del menú (center) */}
-          <div className="flex gap-8 text-xl justify-center text-black font-normal cursor-pointer">
+          <div className="flex gap-32 text-xl justify-center text-black font-semibold cursor-pointer">
             <li onClick={ closeMenu }>
               Women
             </li>
