@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export function Navbar({ navBarPad }) {
+export function Navbar({ navBarPad, bgColor = "transparent" }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigate = useNavigate()
@@ -24,7 +24,7 @@ export function Navbar({ navBarPad }) {
   };
 
   return (
-    <header className={`bg-transparent fixed md:top-0 md:left-0 md:right-0 md:z-50 p-${ navBarPad }`}>
+    <header className={`bg-${bgColor} fixed md:top-0 md:left-0 md:right-0 md:z-50 mx-4 py-${ navBarPad } `}>
       <nav className="relative">
         {/* Botón de menú hamburguesa para móviles */}
         <div className="md:hidden flex items-center justify-between p-3">

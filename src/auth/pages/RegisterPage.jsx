@@ -31,9 +31,6 @@ export function RegisterPage() {
       Swal.fire("Not register", errorMessage, "error")
     }
 
-    
-
-  
   }, [errorMessage])
 
 

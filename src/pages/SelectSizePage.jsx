@@ -37,7 +37,7 @@ export function SelectSizePage() {
     <div className="h-screen bg-white flex flex-col p-5 overflow-hidden">
       <Navbar navBarPad={"4"} />
 
-      <div className="flex-grow max-w-8xl mx-auto bg-[#E8E8E8] rounded-lg shadow-lg flex flex-col px-6">
+      <div className="flex-grow w-full mx-auto bg-[#E8E8E8] rounded-lg shadow-lg flex flex-col px-6">
         {/* Mid Section */}
         <div className="flex flex-col md:flex-row items-center justify-center h-full">
           {/* Text Section */}
