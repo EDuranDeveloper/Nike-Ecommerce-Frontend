@@ -14,10 +14,14 @@ export function useAuthStore() {
         dispatch( onChecking() )
         try {
             const { data } = await authApi.post('/auth', { email, password });
+            
             localStorage.setItem('token', data.token )
             localStorage.setItem('token-init-date', new Date().getTime() )
+            console.log(data)
             dispatch ( onLogin({ name: data.name, uid: data.uid }) )
             
+            Swal.fire({ title: "Welcome!", text: "You are login now!", icon: "success" });
+
             
             
             
@@ -52,6 +56,25 @@ export function useAuthStore() {
             }, 10);
         }
     }
+
+    const checkAuthToken = async() => {
+        const token = localStorage.getItem("token")
+        if( !token ) return dispatch( onLogout() )
+        
+        try {
+            const { data } = await authApi.get("/auth/renew")
+            localStorage.setItem('token', data.token );
+            localStorage.setItem('token-init-date', new Date().getTime() );
+            dispatch( onLogin({ name: data.name, uid: data.uid }) );
+
+            
+        } catch (error) {
+            console.log(error)
+            localStorage.clear()
+            dispatch( onLogout() )
+        }
+
+    }
  
  
     return {
@@ -63,6 +86,7 @@ export function useAuthStore() {
 
         //Metodos
         startLogin,
-        startRegister
+        startRegister,
+        checkAuthToken,
     }
 }
