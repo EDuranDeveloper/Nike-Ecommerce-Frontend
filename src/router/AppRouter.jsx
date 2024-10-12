@@ -41,11 +41,11 @@ export function AppRouter() {
             <Route path="/auth/register" element={<RegisterPage />} />
           </>
         )}
-                <Route path="/size" element={<SelectSizePage />}/>
-                <Route path="/collection" element={<ProductCollectionPage />}/>
-                
+                <Route path="/collection" element={<ProductCollectionPage />}/>                
+                <Route path="/size/:id" element={<SelectSizePage />}/>
 
       </Routes>
+
     </>
   );
 }

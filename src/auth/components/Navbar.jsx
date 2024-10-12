@@ -15,6 +15,10 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
     navigate("/auth/login");
   };
 
+  const onClickCollections = () => {
+    navigate("/collection");
+  };
+
   const { user } = useAuthStore();
 
   const toggleMenu = () => {
@@ -85,11 +89,12 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
 
           {/* Sección del menú (center) */}
           <div
-            className={`flex flex-col md:flex-row md:gap-8 text-lg justify-center text-black font-semibold cursor-pointer pl-${
-              user.name && "40"
+          onClick={onClickCollections}
+            className={`flex flex-col md:flex-row md:gap-8 text-lg justify-center items-center text-black font-semibold cursor-pointer ${
+              user ? "pl-24" : "pl-0"
             }`}
           >
-            <li className="p-2 md:p-0" onClick={closeMenu} >
+            <li className="p-2 md:p-0" onClick={closeMenu}>
               Women
             </li>
             <li className="p-2 md:p-0" onClick={closeMenu}>
@@ -134,11 +139,13 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
                 />
               </svg>
             </li>
-              <li>
-                {user.name ? (
-                  <p>{`Hello, ${user.name.split(" ")[0].trim().slice(0, 5)}...!`}</p> 
-                ) : <p></p> }
-              </li>
+            <li>
+              {user?.name ? (
+                <p>{`Hello, ${user.name.split(" ")[0].trim().slice(0, 5)}...!`}</p>
+              ) : (
+                <p></p>
+              )}
+            </li>
           </div>
         </ul>
       </nav>
