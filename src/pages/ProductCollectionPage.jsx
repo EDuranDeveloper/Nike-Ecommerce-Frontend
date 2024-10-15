@@ -1,119 +1,34 @@
+import Swal from "sweetalert2";
 import { Navbar } from "../auth/components/Navbar";
-import { useProducts } from "../hooks/useProduct";
 import { ProductCard } from "./components/ProductCard";
 import Sidebar from "./components/Sidebar";
+import { useProductStore } from "../hooks/useProductStore";
+import { useEffect } from "react";
 
-const products = [
-  {
-    id: 1,
-    name: "Nike Air Max 90",
-    category: "Kids' Shoes",
-    price: 98.99,
-    originalPrice: 109.99,
-    discount: 10,
-    image: "/Collection/1.png",
-    tag: "HOT",
-  },
-  {
-    id: 2,
-    name: "Nike Air Max 90",
-    category: "Kids' Shoes",
-    price: 98.99,
-    originalPrice: 109.99,
-    discount: 10,
-    image: "/Collection/2.png",
-    tag: "",
-  },
-  {
-    id: 3,
-    name: "Nike Air Max 90",
-    category: "Kids' Shoes",
-    price: 98.99,
-    originalPrice: 109.99,
-    discount: 10,
-    image: "/Collection/3.png",
-    tag: "HOT",
-  },
-  {
-    id: 4,
-    name: "Nike Air Max 90",
-    category: "Kids' Shoes",
-    price: 98.99,
-    originalPrice: 109.99,
-    discount: 10,
-    image: "/Collection/4.png",
-    tag: "NEW",
-  },
-  {
-    id: 5,
-    name: "Nike Air Max 90",
-    category: "Kids' Shoes",
-    price: 98.99,
-    originalPrice: 109.99,
-    discount: 10,
-    image: "/Collection/5.png",
-    tag: "",
-  },
-  {
-    id: 6,
-    name: "Nike Air Max 90",
-    category: "Kids' Shoes",
-    price: 98.99,
-    originalPrice: 109.99,
-    discount: 10,
-    image: "/Collection/6.png",
-    tag: "",
-  },
-  {
-    id: 7,
-    name: "Nike Air Max 90",
-    category: "Men's Shoes",
-    price: 98.99,
-    originalPrice: 109.99,
-    discount: 10,
-    image: "/Collection/7.png",
-    tag: "HOT",
-  },
-  {
-    id: 8,
-    name: "Nike Air Max 90",
-    category: "Kids' Shoes",
-    price: 98.99,
-    originalPrice: 109.99,
-    discount: 10,
-    image: "/Collection/8.png",
-    tag: "",
-  },
-  {
-    id: 9,
-    name: "Nike Air Max 90",
-    category: "Kids' Shoes",
-    price: 98.99,
-    originalPrice: 109.99,
-    discount: 10,
-    image: "/Collection/9.png",
-    tag: "NEW",
-  },
-  {
-    id: 10,
-    name: "Nike Air Max 90",
-    category: "Kids' Shoes",
-    price: 98.99,
-    originalPrice: 109.99,
-    discount: 10,
-    image: "/Collection/10.png",
-    tag: "HOT",
-  },
-];
 
 const ProductCollectionPage = () => {
-  const { products, loading, error } = useProducts();
+
+
+  const { products, loading, error, startGetProducts } = useProductStore()
+
+  useEffect(() => {
+    startGetProducts()
+  }, [])
+  
+
+  if(error) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Something went wrong!",
+    });
+    return <p>400</p>
+  }
 
 
   if (loading) {
     return <p>Loading products...</p>; 
   }
-
   
 
   return (

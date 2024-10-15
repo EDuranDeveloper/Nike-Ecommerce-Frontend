@@ -4,6 +4,7 @@ import { LandingPage } from '../pages/LandingPage';
 import { SelectSizePage } from "../pages/SelectSizePage";
 import { useAuthStore } from "../hooks/useAuthStore";
 import { useEffect } from "react";
+import { useProductStore } from '../hooks/useProductStore';
 import ProductCollectionPage from "../pages/ProductCollectionPage";
 
 
@@ -11,6 +12,7 @@ import ProductCollectionPage from "../pages/ProductCollectionPage";
 
 
 export function AppRouter() {
+
 
   const { status, checkAuthToken } = useAuthStore();
 
@@ -22,6 +24,9 @@ export function AppRouter() {
   if (status === "checking") {
     return <SpinnerPage />;
   }
+
+  
+  
 
   return (
     <>
