@@ -1,22 +1,15 @@
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { useProductStore } from "../../hooks/useProductStore";
 
 export const ProductCard = ({ product }) => {
 
-
-  const { startGetCurrentProduct } = useProductStore()
-
-  const handleSelectProduct = () => {
-    startGetCurrentProduct( product )
-  }
-
   const {_id, principalImage, name, tag, price, category, discount} = product
+
+  console.log(tag);
 
   return (
     <Link to={`/size/${_id}`} className="bg-white p-4 rounded-lg shadow-md transition delay-100 hover:-translate-y-4 duration-300 cursor-pointer">
       <div className="relative mb-2">
-        <img src={principalImage} alt={name} className="w-full h-3/6 object-cover rounded" onClick={handleSelectProduct}/>
+        <img src={principalImage} alt={name} className="w-full h-3/6 object-cover rounded" />
         {tag && (
           <span className={`absolute top-2 right-2 px-6 py-3 text-base font-bold text-white rounded ${tag === 'HOT' ? 'bg-red-500' : 'bg-green-500'}`}>
             {tag}

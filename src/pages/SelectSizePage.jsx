@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navbar } from "../auth/components/Navbar";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { SizeSlice } from "./components/SizeSlice";
 import { useProductStore } from "../hooks/useProductStore";
@@ -12,13 +12,8 @@ export function SelectSizePage() {
     "CM 21.5", "CM 22"
   ];
 
-  const colors = [
-    "#30D5C8", "#E0FFFF", "#FFA500", "#9ACD32", 
-    "#2F4F4F", "#DC143C", "#FF69B4", "#000000"
-  ];
-
   const [selectedSize, setSelectedSize] = useState("");
-  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedColor, setSelectedColor] = useState({});
   
   const { products, error, loading, startGetProducts } = useProductStore();
   const { id } = useParams();
@@ -28,6 +23,14 @@ export function SelectSizePage() {
   }, []);
 
   const currentProduct = products.find((product) => product._id.toString() === id);
+  
+  const coloresYHex = products.map(producto => {
+    return {
+      id: producto._id,
+      color: producto.color,
+      hex: producto.hex
+    };
+  });
 
   if (error) {
     Swal.fire({
@@ -50,7 +53,6 @@ export function SelectSizePage() {
     );
   }
 
-  console.log(currentProduct);
 
   const { category, name, description, principalImage } = currentProduct;
 
@@ -109,15 +111,17 @@ export function SelectSizePage() {
                 SELECT COLOR
               </h3>
               <div className="flex flex-wrap gap-2">
-                {colors.map((color) => (
+                {coloresYHex.map((colorObj, i) => (
+                  <Link key={colorObj.id} to={`/size/${colorObj.id}`}>
                   <button
-                    key={color}
+                    key={colorObj.id}
                     className={`w-10 h-10 rounded-full border-2 ${
-                      selectedColor === color ? "border-black" : "border-transparent"
+                      selectedColor.color === colorObj.color ? "border-black" : "border-transparent"
                     }`}
-                    style={{ backgroundColor: color }}
-                    onClick={() => setSelectedColor(color)}
+                    style={{ backgroundColor: colorObj.hex }}
+                    onClick={() => setSelectedColor(colorObj)}
                   />
+                  </Link>
                 ))}
               </div>
             </div>
