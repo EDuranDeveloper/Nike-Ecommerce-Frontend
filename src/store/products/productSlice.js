@@ -3,9 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     products: [],
-    selectedProduct: [],
-    selectedSize: '',
-    selectedColor: '',
+    selectedProduct: {},
     loading: false,
     error: null,
 };
@@ -20,13 +18,9 @@ export const productSlice = createSlice({
             state.error = null
         },
         setSelectedProduct: (state, { payload }) => {
-            state.selectedProduct = payload
-        },
-        setSelectedSize: (state, { payload }) => {
-            state.selectedSize = payload
-        },
-        settSelectedColor: (state, { payload }) => {
-            state.selectedColor = payload;
+            state.selectedProduct = payload.currentProduct
+            state.loading = false
+            state.error = null
         },
         setLoading: (state, { payload }) => {
             state.loading = true

@@ -6,6 +6,7 @@ import { useAuthStore } from "../hooks/useAuthStore";
 import { useEffect } from "react";
 import { useProductStore } from '../hooks/useProductStore';
 import ProductCollectionPage from "../pages/ProductCollectionPage";
+import { useCartStore } from "../hooks/useCartStore";
 
 
 
@@ -14,16 +15,26 @@ import ProductCollectionPage from "../pages/ProductCollectionPage";
 export function AppRouter() {
 
 
+  const { startGetCartUser } = useCartStore()
   const { status, checkAuthToken } = useAuthStore();
 
   useEffect(() => {
     checkAuthToken();
   }, []);
 
+  useEffect(() => {
+    if (status === "authenticated") {
+      startGetCartUser(); 
+    }
+  }, [status]);
+
   // Muestra una página de carga mientras se verifica el estado de autenticación
   if (status === "checking") {
     return <SpinnerPage />;
   }
+
+  
+
 
   
   

@@ -5,7 +5,7 @@ import { setError, setLoading, setProducts, setSelectedProduct } from "../store/
 export function useProductStore() {
     
         const dispatch = useDispatch()
-        const { loading, products, error, selectedProduct } = useSelector(state => state.product )
+        const { loading, products, error } = useSelector(state => state.product )
 
     const startGetProducts = async() => {
 
@@ -16,7 +16,7 @@ export function useProductStore() {
             const products = data.products; 
 
     
-            dispatch(setProducts(products));
+            dispatch( setProducts(products) );
         } catch (error) {
             console.error("Error fetching products:", error);
             dispatch( setError(error) )
@@ -24,9 +24,18 @@ export function useProductStore() {
         }
     }
 
-    const startGetCurrentProduct = ( product ) => {
-        dispatch( setSelectedProduct( product ) )
-    }
+    // const startGetCurrentProduct = ( { currentProduct } ) => {
+
+    //     try {
+    //         dispatch( setSelectedProduct( { currentProduct } ) )
+    //     } catch (error) {
+    //         console.error("Error set current product:", error);
+    //         dispatch ( setError(error) )
+    //     }
+
+    //     // dispatch( setSelectedProductInCart)
+    // }
+
 
 
     return {
@@ -34,11 +43,9 @@ export function useProductStore() {
         loading,
         error,
         products,
-        selectedProduct,
-    
+
         //Metodos
         startGetProducts,
-        startGetCurrentProduct,
 }
 }
 

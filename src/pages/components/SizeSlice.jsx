@@ -1,4 +1,14 @@
+import { useCartStore } from "../../hooks/useCartStore";
+import { useProductStore } from "../../hooks/useProductStore";
+
 export function SizeSlice({ currentProduct }) {
+
+  const { startPostCartInUser } = useCartStore()
+
+  const onAddToBag = () => {
+    startPostCartInUser({ currentProduct })
+  }
+
 
   return (
     <div className="flex flex-col lg:flex-row bg-white mx-auto rounded-xl justify-between p-8 mt-6">
@@ -16,7 +26,7 @@ export function SizeSlice({ currentProduct }) {
 
       <div className="flex flex-col items-center justify-center gap-6 mt-6 lg:mt-0">
         <div className="flex items-center">
-          <button className="bg-black text-white px-8 lg:px-12 py-4 lg:py-6 rounded-lg font-semibold ml-4">
+          <button onClick={onAddToBag} className="bg-black text-white px-8 lg:px-12 py-4 lg:py-6 rounded-lg font-semibold ml-4">
             ADD TO BAG
           </button>
           <div className="flex flex-col ml-2">

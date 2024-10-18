@@ -4,8 +4,6 @@ export const ProductCard = ({ product }) => {
 
   const {_id, principalImage, name, tag, price, category, discount} = product
 
-  console.log(tag);
-
   return (
     <Link to={`/size/${_id}`} className="bg-white p-4 rounded-lg shadow-md transition delay-100 hover:-translate-y-4 duration-300 cursor-pointer">
       <div className="relative mb-2">

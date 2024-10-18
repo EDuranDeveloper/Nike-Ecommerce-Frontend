@@ -19,11 +19,11 @@ export function SelectSizePage() {
   const { id } = useParams();
 
   useEffect(() => {
-    startGetProducts();
-  }, []);
-
-  const currentProduct = products.find((product) => product._id.toString() === id);
+    startGetProducts()
+  }, [])
   
+  const currentProduct = products.find((product) => product._id.toString() === id);
+    
   const coloresYHex = products.map(producto => {
     return {
       id: producto._id,
@@ -52,6 +52,9 @@ export function SelectSizePage() {
       </div>
     );
   }
+
+
+  
 
 
   const { category, name, description, principalImage } = currentProduct;
@@ -111,7 +114,7 @@ export function SelectSizePage() {
                 SELECT COLOR
               </h3>
               <div className="flex flex-wrap gap-2">
-                {coloresYHex.map((colorObj, i) => (
+                {coloresYHex.map((colorObj ) => (
                   <Link key={colorObj.id} to={`/size/${colorObj.id}`}>
                   <button
                     key={colorObj.id}
@@ -128,7 +131,7 @@ export function SelectSizePage() {
           </div>
         </div>
 
-         <SizeSlice currentProduct={currentProduct}/> 
+         <SizeSlice currentProduct={currentProduct} /> 
       </div>
     </div>
   );

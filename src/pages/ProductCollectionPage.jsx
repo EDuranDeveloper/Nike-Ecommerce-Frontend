@@ -4,6 +4,7 @@ import { ProductCard } from "./components/ProductCard";
 import Sidebar from "./components/Sidebar";
 import { useProductStore } from "../hooks/useProductStore";
 import { useEffect } from "react";
+import { SpinnerPage } from "../auth/pages/SpinnerPage";
 
 
 const ProductCollectionPage = () => {
@@ -14,6 +15,10 @@ const ProductCollectionPage = () => {
   useEffect(() => {
     startGetProducts()
   }, [])
+
+  if (loading) {
+    return <SpinnerPage />
+  }
   
 
   if(error) {
@@ -26,9 +31,7 @@ const ProductCollectionPage = () => {
   }
 
 
-  if (loading) {
-    return <p>Loading products...</p>; 
-  }
+  
   
 
   return (
