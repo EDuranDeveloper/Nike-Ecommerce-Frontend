@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { cardApi } from "../api/cardApi";
-import { onError, onGetCartUser, onLoadingCart } from "../store/cart/cartSlice";
+import { onGetCartUser, onLoadingCart } from "../store/cart/cartSlice";
 import Swal from "sweetalert2";
 
 
@@ -10,7 +10,10 @@ export function useCartStore() {
     
         const dispatch = useDispatch()
         const { user } = useSelector(state => state.auth )
+        const { cartUser, errorMessage, loading } = useSelector(state => state.cart )
         const quantity = 1
+
+        // console.log(user);
 
 
     const startPostCartInUser = async({ currentProduct }) => {
@@ -28,23 +31,33 @@ export function useCartStore() {
               
         } catch (error) {
             console.error("Error add product:", error);
-            dispatch( onError(error) )
+            dispatch( onErrorCart(error) )
             throw error; 
         }
 
     }
 
     const startGetCartUser = async() => {
-        const { data } = await cardApi.get(`/cart/${user.uid}`)
 
-        dispatch( onGetCartUser(data.cart) )
+        dispatch( onLoadingCart() )
 
-        console.log(data);
+        try {
+            const { data } = await cardApi.get(`/cart/${user.uid}`)
+            dispatch( onGetCartUser(data.cart) )
+        } catch (error) {
+            dispatch( onErrorCart(error) )
+            console.log(error);
+        }
+
+        // console.log(data);
 
     } 
 
     return {
         //Propiedades
+        cartUser,
+        loading,
+        errorMessage,
 
         //Metodos
         startPostCartInUser,

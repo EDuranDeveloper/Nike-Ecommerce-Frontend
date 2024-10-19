@@ -4,9 +4,9 @@ import { LandingPage } from '../pages/LandingPage';
 import { SelectSizePage } from "../pages/SelectSizePage";
 import { useAuthStore } from "../hooks/useAuthStore";
 import { useEffect } from "react";
-import { useProductStore } from '../hooks/useProductStore';
 import ProductCollectionPage from "../pages/ProductCollectionPage";
 import { useCartStore } from "../hooks/useCartStore";
+import { ShoppingCartPage } from "../pages/ShoppingCartPage";
 
 
 
@@ -15,29 +15,17 @@ import { useCartStore } from "../hooks/useCartStore";
 export function AppRouter() {
 
 
-  const { startGetCartUser } = useCartStore()
   const { status, checkAuthToken } = useAuthStore();
 
   useEffect(() => {
     checkAuthToken();
   }, []);
 
-  useEffect(() => {
-    if (status === "authenticated") {
-      startGetCartUser(); 
-    }
-  }, [status]);
-
   // Muestra una página de carga mientras se verifica el estado de autenticación
   if (status === "checking") {
     return <SpinnerPage />;
   }
 
-  
-
-
-  
-  
 
   return (
     <>
@@ -59,6 +47,7 @@ export function AppRouter() {
         )}
                 <Route path="/collection" element={<ProductCollectionPage />}/>                
                 <Route path="/size/:id" element={<SelectSizePage />}/>
+                <Route path="/bag" element={<ShoppingCartPage />}/>
 
       </Routes>
 

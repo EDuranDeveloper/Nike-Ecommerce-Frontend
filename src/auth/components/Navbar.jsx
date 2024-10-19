@@ -19,6 +19,10 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
     navigate("/collection");
   };
 
+  const onClickBag = () => {
+    navigate("/bag");
+  }
+
   const { user } = useAuthStore();
 
   const toggleMenu = () => {
@@ -116,6 +120,7 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
                 className="h-6 w-6 cursor-pointer"
                 viewBox="0 0 20 20"
                 fill="currentColor"
+                onClick={onClickBag}
               >
                 <path
                   fillRule="evenodd"

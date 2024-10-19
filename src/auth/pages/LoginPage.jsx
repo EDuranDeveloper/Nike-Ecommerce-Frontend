@@ -3,6 +3,7 @@ import { Navbar } from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import { useEffect } from "react";
+import { useCartStore } from "../../hooks/useCartStore";
 import Swal from "sweetalert2";
 
 export function LoginPage() {
@@ -12,6 +13,7 @@ export function LoginPage() {
   const { register, handleSubmit, formState: {errors} } = useForm()
 
   const { startLogin, errorMessage } = useAuthStore()
+  const { startGetCartUser } = useCartStore()
   
   const onGetAccount = () => {
     navigate("/auth/register")
@@ -21,8 +23,7 @@ export function LoginPage() {
     
     const {email, password} = data
 
-    startLogin({ email, password })
-    
+    startLogin({ email, password })    
 
   })
 
