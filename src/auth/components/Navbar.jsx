@@ -8,7 +8,7 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
   const navigate = useNavigate();
 
   const onClickLogo = () => {
-    navigate("/");
+    navigate("/women");
   };
 
   const onClickAccount = () => {
@@ -29,6 +29,11 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const onClickWomen = () => {
+    navigate("/women");
+    setIsMenuOpen(false);
+  }
+  
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
@@ -93,12 +98,11 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
 
           {/* Sección del menú (center) */}
           <div
-          onClick={onClickCollections}
             className={`flex flex-col md:flex-row md:gap-8 text-lg justify-center items-center text-black font-semibold cursor-pointer ${
               user ? "pl-24" : "pl-0"
             }`}
           >
-            <li className="p-2 md:p-0" onClick={closeMenu}>
+            <li className="p-2 md:p-0" onClick={onClickWomen}>
               Women
             </li>
             <li className="p-2 md:p-0" onClick={closeMenu}>
@@ -107,13 +111,13 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
             <li className="p-2 md:p-0" onClick={closeMenu}>
               Kids
             </li>
-            <li className="p-2 md:p-0" onClick={closeMenu}>
+            <li className="p-2 md:p-0" onClick={onClickCollections}>
               Collections
             </li>
           </div>
 
           {/* Sección de los íconos (end) */}
-          <div className="flex space-x-4 p-2 bg-white rounded">
+          <div className="flex space-x-4 p-2 rounded">
             <li>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

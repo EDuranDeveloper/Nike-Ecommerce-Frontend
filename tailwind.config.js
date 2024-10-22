@@ -5,8 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        '3xl': '1920px', // Breakpoint para pantallas de 1920px y más grandes
+        '4xl': '2560px', // Breakpoint para pantallas de 2560px y más grandes
+      },
+    },
   },
   plugins: [],
 }
-

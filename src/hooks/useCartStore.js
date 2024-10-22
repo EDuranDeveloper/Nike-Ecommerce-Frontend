@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { cardApi } from "../api/cardApi";
-import { onGetCartUser, onLoadingCart } from "../store/cart/cartSlice";
+import { onGetCartUser, onLoadingCart, onErrorCart } from "../store/cart/cartSlice";
 import Swal from "sweetalert2";
 
 
@@ -45,8 +45,9 @@ export function useCartStore() {
             const { data } = await cardApi.get(`/cart/${user.uid}`)
             dispatch( onGetCartUser(data.cart) )
         } catch (error) {
-            dispatch( onErrorCart(error) )
             console.log(error);
+            dispatch( onErrorCart(error) )
+            throw error; 
         }
 
         // console.log(data);

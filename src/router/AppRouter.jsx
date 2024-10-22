@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import ProductCollectionPage from "../pages/ProductCollectionPage";
 import { useCartStore } from "../hooks/useCartStore";
 import { ShoppingCartPage } from "../pages/ShoppingCartPage";
+import { WomenPage } from "../pages/landing/WomenPage";
 
 
 
@@ -48,6 +49,7 @@ export function AppRouter() {
                 <Route path="/collection" element={<ProductCollectionPage />}/>                
                 <Route path="/size/:id" element={<SelectSizePage />}/>
                 <Route path="/bag" element={<ShoppingCartPage />}/>
+                <Route path="/women" element={<WomenPage />}/>
 
       </Routes>
 

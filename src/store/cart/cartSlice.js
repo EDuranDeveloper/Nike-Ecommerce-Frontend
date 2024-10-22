@@ -18,6 +18,7 @@ export const cartSlice = createSlice({
         },
         onErrorCart: (state, { payload }) => {
             state.errorMessage = payload
+            state.loading = false
         }
     }
 });
