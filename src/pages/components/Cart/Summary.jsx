@@ -1,5 +1,6 @@
-export const Summary = ({ items, totalWithDiscount }) => {
+export const Summary = ({ items, totalWithDiscount, totalDiscount }) => {
   let isFree = true;
+
 
   if (items?.length === 0) {
     return (
@@ -36,6 +37,10 @@ export const Summary = ({ items, totalWithDiscount }) => {
       <div className="flex justify-between mb-2">
         <span>Subtotal</span>
         <span className="font-bold">${(totalWithDiscount - (isFree ? 0 : 50)).toFixed(2)}</span>
+      </div>
+      <div className="flex justify-between mb-2">
+        <span>Total save</span>
+        <span className="font-bold text-green-700">${totalDiscount.toFixed(2)}</span>
       </div>
       <div className="flex justify-between mb-2">
         <span>Estimated Shipping & Handling</span>

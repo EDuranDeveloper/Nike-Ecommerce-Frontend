@@ -1,14 +1,17 @@
-export function getTotalPrice({ items }) {
+export function getTotalPrice({ items = [] }) {
 
-  let totalWithDiscount = 0
-  
-  if (items) {
-    items?.forEach((product) => {
-      const itemTotal = (product.price * product.quantity) - ((product.price * product.quantity) * (product.discount / 100));
-      totalWithDiscount += itemTotal;
-    });
-  }
+  let totalWithDiscount = 0;
+  let totalDiscount = 0;
+
+  items.forEach((product) => {
+    const itemTotalPrice = product.price * product.quantity;
+    const itemDiscount = itemTotalPrice * (product.discount / 100);
+    totalDiscount += itemDiscount;
+    totalWithDiscount += (itemTotalPrice - itemDiscount);
+  });
+
   return {
-    totalWithDiscount
-  }
+    totalWithDiscount,
+    totalDiscount,
+  };
 }

@@ -84,10 +84,10 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
         <ul
           className={`${
             isMenuOpen ? "block" : "hidden"
-          } md:flex items-center justify-between font-semibold text-[#333333] bg-white md:bg-transparent md:static md:flex-row flex-col absolute left-0 w-full md:w-auto md:space-x-8 top-full mt-2 md:mt-0 px-4 py-2 md:p-0 transition-all duration-300 ease-in-out`}
+          } md:flex items-center justify-center md:justify-between font-semibold text-[#333333] bg-white md:bg-transparent md:static md:flex-row flex-col absolute left-0 w-full md:w-auto md:space-x-8 top-full mt-2 md:mt-0 px-4 py-2 md:p-0 transition-all duration-300 ease-in-out rounded-lg`}
         >
           {/* Sección de la imagen (start) */}
-          <li className="p-2">
+          <li className="flex justify-center p-2">
             <img
               src="../nikelogo.png"
               alt="Logo"
@@ -99,7 +99,7 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
           {/* Sección del menú (center) */}
           <div
             className={`flex flex-col md:flex-row md:gap-8 text-lg justify-center items-center text-black font-semibold cursor-pointer ${
-              user ? "pl-24" : "pl-0"
+              user ? "md:pl-24" : "md:pl-0"
             }`}
           >
             <li className="p-2 md:p-0" onClick={onClickWomen}>
@@ -117,7 +117,7 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
           </div>
 
           {/* Sección de los íconos (end) */}
-          <div className="flex space-x-4 p-2 rounded">
+          <div className="flex space-x-4 p-2 rounded items-center justify-center">
             <li>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

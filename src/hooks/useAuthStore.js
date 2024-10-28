@@ -17,7 +17,6 @@ export function useAuthStore() {
             
             localStorage.setItem('token', data.token )
             localStorage.setItem('token-init-date', new Date().getTime() )
-            console.log(data)
             dispatch ( onLogin({ name: data.name, uid: data.uid }) )
             
             Swal.fire({ title: "Welcome!", text: "You are login now!", icon: "success" });

@@ -16,9 +16,13 @@ export function ShoppingCartPage() {
     startGetCartUser()
   }, [])
 
+
+  const { items } = cartUser
+
   if(loading) {
     return <SpinnerPage />
   }
+  
 
   if (errorMessage) {
     Swal.fire({
@@ -29,10 +33,7 @@ export function ShoppingCartPage() {
     return <h1 className="text-4xl font-bold my-16">An error occurred. Please try again later.</h1>
   }
   
-
-  const { items } = cartUser
-
-  const { totalWithDiscount } = getTotalPrice({ items })
+  const { totalWithDiscount, totalDiscount } = getTotalPrice({ items })
 
   return (
     <div className="container mx-auto p-16 m-16">
@@ -50,7 +51,7 @@ export function ShoppingCartPage() {
           <Favorites />
         </div>
         <div>
-          <Summary items={items} totalWithDiscount={totalWithDiscount}/>
+          <Summary items={items} totalWithDiscount={totalWithDiscount} totalDiscount={totalDiscount}/>
         </div>
       </div>
     </div>
