@@ -1,4 +1,4 @@
-import { Navbar } from "../auth/components/Navbar";
+import { Navbar } from "../components/Navbar";
 
 export function LandingPage() {
   return (

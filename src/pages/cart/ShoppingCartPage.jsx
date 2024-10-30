@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { useCartStore } from "../hooks/useCartStore";
-import { Favorites } from "./components/Cart/Favorites";
-import { ShoppingCart } from "./components/Cart/ShoppingCart";
-import { Summary } from "./components/Cart/Summary";
-import { Navbar } from "../auth/components/Navbar";
-import { getTotalPrice } from "./components/Cart/helpers/getTotalPrice";
-import { SpinnerPage } from "../auth/pages/SpinnerPage";
+import { useCartStore } from "../../hooks/useCartStore";
 import Swal from "sweetalert2";
+import { SpinnerPage } from "../../auth/pages/SpinnerPage";
+import { Favorites } from "./Favorites";
+import { ShoppingCart } from "./ShoppingCart";
+import { Summary } from "./Summary";
+import { Navbar } from "../components/Navbar";
+import { getTotalPrice } from "./helpers/getTotalPrice";
 
 export function ShoppingCartPage() {
 

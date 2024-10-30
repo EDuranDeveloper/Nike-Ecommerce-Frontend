@@ -1,13 +1,12 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { LoginPage, RegisterPage, SpinnerPage } from '../auth/pages';
-import { LandingPage } from '../pages/LandingPage';
-import { SelectSizePage } from "../pages/SelectSizePage";
 import { useAuthStore } from "../hooks/useAuthStore";
 import { useEffect } from "react";
-import ProductCollectionPage from "../pages/ProductCollectionPage";
-import { useCartStore } from "../hooks/useCartStore";
-import { ShoppingCartPage } from "../pages/ShoppingCartPage";
 import { WomenPage } from "../pages/landing/WomenPage";
+import { LandingPage } from "../pages/landing/LandingPage";
+import { ProductCollectionPage } from "../pages/product/ProductCollectionPage";
+import { SelectSizePage } from "../pages/size/SelectSizePage";
+import { ShoppingCartPage } from "../pages/cart/ShoppingCartPage";
+import { SpinnerPage } from "../auth/pages/SpinnerPage";
 
 
 

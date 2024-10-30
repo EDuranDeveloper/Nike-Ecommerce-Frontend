@@ -1,13 +1,11 @@
 import Swal from "sweetalert2";
-import { Navbar } from "../auth/components/Navbar";
-import { ProductCard } from "./components/ProductCard";
-import Sidebar from "./components/Sidebar";
-import { useProductStore } from "../hooks/useProductStore";
 import { useEffect } from "react";
-import { SpinnerPage } from "../auth/pages/SpinnerPage";
+import { Navbar } from "../components/Navbar";
+import { useProductStore } from "../../hooks/useProductStore";
+import { SpinnerPage } from "../../auth/pages/SpinnerPage";
 
 
-const ProductCollectionPage = () => {
+export const ProductCollectionPage = () => {
 
 
   const { products, loading, error, startGetProducts } = useProductStore()
@@ -57,4 +55,3 @@ const ProductCollectionPage = () => {
   );
 };
 
-export default ProductCollectionPage;

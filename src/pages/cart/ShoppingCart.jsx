@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useCartStore } from "../../../hooks/useCartStore";
+import { useCartStore } from "../../hooks/useCartStore";
 
 export const ShoppingCart = ({ product }) => {
 

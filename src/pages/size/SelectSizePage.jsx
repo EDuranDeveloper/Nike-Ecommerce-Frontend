@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Navbar } from "../auth/components/Navbar";
 import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import { SizeSlice } from "./components/SizeSlice";
-import { useProductStore } from "../hooks/useProductStore";
+import { useProductStore } from "../../hooks/useProductStore";
+import { Navbar } from "../components/Navbar";
 
 export function SelectSizePage() {
   const sizes = [
@@ -11,19 +10,20 @@ export function SelectSizePage() {
     "CM 19", "CM 19.5", "CM 20", "CM 20.5", "CM 21",
     "CM 21.5", "CM 22"
   ];
-
+  
   const [selectedSize, setSelectedSize] = useState("");
-  const [selectedColor, setSelectedColor] = useState({});
+  const [selectedColor, setSelectedColor] = useState([]);
+
   
   const { products, error, loading, startGetProducts } = useProductStore();
   const { id } = useParams();
-
+  
   useEffect(() => {
     startGetProducts()
   }, [])
   
   const currentProduct = products.find((product) => product._id.toString() === id);
-    
+  
   const coloresYHex = products.map(producto => {
     return {
       id: producto._id,
@@ -31,7 +31,8 @@ export function SelectSizePage() {
       hex: producto.hex
     };
   });
-
+  
+    
   if (error) {
     Swal.fire({
       icon: "error",
@@ -40,11 +41,11 @@ export function SelectSizePage() {
     });
     return <p>400</p>;
   }
-
+  
   if (loading) {
-    return <p>Loading products...</p>;
+    return <p>hola</p>
   }
-
+  
   if (!currentProduct) {
     return (
       <div className="flex items-center justify-center h-full">
@@ -52,13 +53,11 @@ export function SelectSizePage() {
       </div>
     );
   }
-
-
   
-
-
+  
+  
   const { category, name, description, principalImage } = currentProduct;
-
+  
   return (
     <div className="h-screen bg-white flex flex-col p-5 md:overflow-hidden">
       <Navbar />
@@ -114,7 +113,7 @@ export function SelectSizePage() {
                 SELECT COLOR
               </h3>
               <div className="flex flex-wrap gap-2">
-                {coloresYHex.map((colorObj ) => (
+                {coloresYHex.map(( colorObj ) => (
                   <Link key={colorObj.id} to={`/size/${colorObj.id}`}>
                   <button
                     key={colorObj.id}
@@ -123,6 +122,7 @@ export function SelectSizePage() {
                     }`}
                     style={{ backgroundColor: colorObj.hex }}
                     onClick={() => setSelectedColor(colorObj)}
+                    
                   />
                   </Link>
                 ))}
