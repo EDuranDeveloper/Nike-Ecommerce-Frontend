@@ -24,6 +24,7 @@ export const productSlice = createSlice({
         },
         setLoading: (state, { payload }) => {
             state.loading = true
+            state.error = null
         },
         setError: (state, { payload }) => {
             state.loading = false

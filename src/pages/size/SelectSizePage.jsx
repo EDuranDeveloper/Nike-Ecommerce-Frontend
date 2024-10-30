@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useProductStore } from "../../hooks/useProductStore";
 import { Navbar } from "../components/Navbar";
+import { SizeSlice } from "./SizeSlice";
 
 export function SelectSizePage() {
   const sizes = [

@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { Navbar } from "../components/Navbar";
 import { useProductStore } from "../../hooks/useProductStore";
 import { SpinnerPage } from "../../auth/pages/SpinnerPage";
+import { Sidebar } from "../cart/Sidebar";
+import { ProductCard } from "./ProductCard";
 
 
 export const ProductCollectionPage = () => {

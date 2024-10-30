@@ -7,6 +7,7 @@ import { ProductCollectionPage } from "../pages/product/ProductCollectionPage";
 import { SelectSizePage } from "../pages/size/SelectSizePage";
 import { ShoppingCartPage } from "../pages/cart/ShoppingCartPage";
 import { SpinnerPage } from "../auth/pages/SpinnerPage";
+import { FavoritesPage } from "../pages/favorites/FavoritesPage";
 
 
 
@@ -49,6 +50,7 @@ export function AppRouter() {
                 <Route path="/size/:id" element={<SelectSizePage />}/>
                 <Route path="/bag" element={<ShoppingCartPage />}/>
                 <Route path="/women" element={<WomenPage />}/>
+                <Route path="/favorites" element={<FavoritesPage />}/>
 
       </Routes>
 

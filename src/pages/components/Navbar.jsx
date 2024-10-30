@@ -21,6 +21,10 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
 
   const onClickBag = () => {
     navigate("/bag");
+  };
+
+  const onClickFavorites = () => {
+    navigate("/favorites");
   }
 
   const { user } = useAuthStore();
@@ -32,8 +36,8 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
   const onClickWomen = () => {
     navigate("/women");
     setIsMenuOpen(false);
-  }
-  
+  };
+
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
@@ -118,6 +122,20 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
 
           {/* Sección de los íconos (end) */}
           <div className="flex space-x-4 p-2 rounded items-center justify-center">
+            <li onClick={onClickFavorites}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 cursor-pointer"
+                viewBox="0 0 20 20"
+                fillRule="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </li>
             <li>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +168,10 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
             </li>
             <li>
               {user?.name ? (
-                <p>{`Hello, ${user.name.split(" ")[0].trim().slice(0, 5)}...!`}</p>
+                <p>{`Hello, ${user.name
+                  .split(" ")[0]
+                  .trim()
+                  .slice(0, 5)}...!`}</p>
               ) : (
                 <p></p>
               )}

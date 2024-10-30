@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 
-const Sidebar = () => {
-  // Estados para controlar la visibilidad de los filtros
+export const Sidebar = () => {
+
   const [showGender, setShowGender] = useState(true);
   const [showPromo, setShowPromo] = useState(true);
 
-  // Función para alternar la visibilidad de los filtros
   const toggleGender = () => setShowGender(!showGender);
   const togglePromo = () => setShowPromo(!showPromo);
 
@@ -94,4 +93,3 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;

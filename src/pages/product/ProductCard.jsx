@@ -24,7 +24,7 @@ export const ProductCard = ({ product }) => {
             <span className="text-lg font-bold mr-2">
               ${((price * (100 - discount)) / 100).toFixed(2)}
             </span>
-            <span className="text-lg font-bold mr-2 line-through">${price.toFixed(2)}</span>
+            <span className="text-base font-bold mr-2 line-through text-gray-400">${price.toFixed(2)}</span>
             <span className="text-md text-green-600 font-semibold">{discount}% OFF</span>
           </>
         ) : (
