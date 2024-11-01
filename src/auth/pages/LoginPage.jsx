@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
-import { Navbar } from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import { useEffect } from "react";
 import { useCartStore } from "../../hooks/useCartStore";
 import Swal from "sweetalert2";
+import { Navbar } from "../../pages/components/Navbar";
 
 export function LoginPage() {
 

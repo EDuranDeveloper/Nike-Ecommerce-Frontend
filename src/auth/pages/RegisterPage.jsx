@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { Navbar } from "../components/Navbar";
 import { useForm } from 'react-hook-form';
 import { useAuthStore } from "../../hooks/useAuthStore";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
+import { Navbar } from "../../pages/components/Navbar";
 
 export function RegisterPage() {
 

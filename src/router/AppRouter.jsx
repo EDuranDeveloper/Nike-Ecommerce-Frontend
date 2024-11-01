@@ -2,12 +2,14 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { useAuthStore } from "../hooks/useAuthStore";
 import { useEffect } from "react";
 import { WomenPage } from "../pages/landing/WomenPage";
-import { LandingPage } from "../pages/landing/LandingPage";
 import { ProductCollectionPage } from "../pages/product/ProductCollectionPage";
 import { SelectSizePage } from "../pages/size/SelectSizePage";
 import { ShoppingCartPage } from "../pages/cart/ShoppingCartPage";
 import { SpinnerPage } from "../auth/pages/SpinnerPage";
 import { FavoritesPage } from "../pages/favorites/FavoritesPage";
+import { LoginPage } from "../auth/pages/LoginPage";
+import { RegisterPage } from "../auth/pages/RegisterPage";
+import { LandingPage } from "../pages/landing/LandingPage";
 
 
 

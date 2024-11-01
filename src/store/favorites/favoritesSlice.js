@@ -8,20 +8,26 @@ export const favoritesSlice = createSlice({
     error: null,
   },
   reducers: {
-    setProducts: (state, { payload }) => {
+    setFavorites: (state, { payload }) => {
       state.favorites = payload;
       state.loading = false;
       state.error = null;
     },
-    setLoading: (state, { payload }) => {
-        state.loading = true
-        state.error = null
+    setLoading: (state) => {
+      state.loading = true;
+      state.error = null;
     },
     setError: (state, { payload }) => {
-        state.loading = false
-        state.error = payload
-    }
+      state.loading = false;
+      state.error = payload;
+    },
+    removeFavorite: (state, { payload }) => {
+      console.log(payload);
+      state.favorites = state.favorites.filter(
+        (favorite) => favorite.productId !== payload
+      );
+    },
   },
 });
 
-export const { increment } = favoritesSlice.actions;
+export const { setFavorites, setLoading, setError, removeFavorite } = favoritesSlice.actions;
