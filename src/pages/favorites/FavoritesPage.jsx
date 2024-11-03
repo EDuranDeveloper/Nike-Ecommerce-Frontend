@@ -29,8 +29,8 @@ export function FavoritesPage() {
             <div className="flex-1">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {favorites.length === 0 ? (
-                  <div className="flex flex-col w-screen items-center justify-center">
-                  <h1 className="text-3xl font-bold">Your favorite products list is empty go to</h1>
+                  <div className="flex flex-col md:w-screen items-center justify-center">
+                  <h1 className="text-3xl font-bold text-center">Your favorite products list is empty go to</h1>
                   <button
                     className="px-4 py-3 mt-2 text-2xl font-bold rounded-md relative 
                                after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-black 

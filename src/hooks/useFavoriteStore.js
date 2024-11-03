@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setError, setFavorites, setLoading, removeFavorite } from "../store/favorites/favoritesSlice";
 import { favoriteApi } from "../api/favoriteApi";
-import Swal from "sweetalert2";
 
 export function useFavoriteStore() {
     
@@ -25,23 +24,19 @@ export function useFavoriteStore() {
         }
     }
 
-    const startPostFavoriteInUser = async({ currentProduct }) => {
+    const startPostFavoriteInUser = async( productId ) => {
 
         dispatch( setLoading() )
 
         try {
-            await favoriteApi.post(`/favorites/${user.uid}/${currentProduct._id}/add`);
+            await favoriteApi.post(`/favorites/${user.uid}/${productId}/add`);
 
-            Swal.fire({
-                title: "Added to favorites!",
-                text: `${currentProduct.name} - ${currentProduct.color}`,
-                icon: "success"
-              });
-              
         } catch (error) {
             console.error("Error add favorite:", error);
-            // dispatch( setError(error) )
-            // throw error; 
+            
+        }
+        finally {
+            await startGetFavorites()
         }
 
     }

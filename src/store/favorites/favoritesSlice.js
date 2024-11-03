@@ -22,7 +22,6 @@ export const favoritesSlice = createSlice({
       state.error = payload;
     },
     removeFavorite: (state, { payload }) => {
-      console.log(payload);
       state.favorites = state.favorites.filter(
         (favorite) => favorite.productId !== payload
       );

@@ -8,11 +8,11 @@ export function SizeSlice({ currentProduct }) {
   const { startPostFavoriteInUser } = useFavoriteStore()
 
   const onAddToBag = () => {
-    startPostCartInUser({ currentProduct })
+    startPostCartInUser( currentProduct._id )
   }
 
   const onAddToFavorites = () => {
-    startPostFavoriteInUser({ currentProduct })
+    startPostFavoriteInUser( currentProduct._id )
   }
 
   const handleModalImage = (image) => {

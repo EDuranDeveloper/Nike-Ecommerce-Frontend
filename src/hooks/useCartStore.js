@@ -13,26 +13,18 @@ export function useCartStore() {
         const { cartUser, errorMessage, loading } = useSelector(state => state.cart )
         const quantity = 1
 
-        // console.log(user);
-
-
-    const startPostCartInUser = async({ currentProduct }) => {
-
-        dispatch( onLoadingCart() )
+    const startPostCartInUser = async( productId ) => {
 
         try {
-            await cartApi.post(`/cart/${user.uid}/${currentProduct._id}/add`, { quantity });
-
-            Swal.fire({
-                title: "Added to bag!",
-                text: `${currentProduct.name} - ${currentProduct.color}`,
-                icon: "success"
-              });
+            await cartApi.post(`/cart/${user.uid}/${productId}/add`, { quantity });
               
         } catch (error) {
             console.error("Error add product:", error);
             dispatch( onErrorCart(error) )
             throw error; 
+        }
+        finally {
+            await startGetCartUser()
         }
 
     }

@@ -10,12 +10,11 @@ import { getTotalPrice } from "./helpers/getTotalPrice";
 
 export function ShoppingCartPage() {
 
-  const { cartUser, loading, errorMessage, startGetCartUser } = useCartStore()
+  const { cartUser, loading, errorMessage, startGetCartUser, startPostCartInUser } = useCartStore()
 
   useEffect(() => {
     startGetCartUser()
   }, [])
-
 
   const { items } = cartUser
 
@@ -23,7 +22,6 @@ export function ShoppingCartPage() {
     return <SpinnerPage />
   }
   
-
   if (errorMessage) {
     Swal.fire({
       icon: "error",
@@ -48,7 +46,7 @@ export function ShoppingCartPage() {
             <ShoppingCart key={product.productId} product={product}  />
           ))}
 
-          <Favorites />
+          <Favorites startPostCartInUser={startPostCartInUser}/>
         </div>
         <div>
           <Summary items={items} totalWithDiscount={totalWithDiscount} totalDiscount={totalDiscount}/>
