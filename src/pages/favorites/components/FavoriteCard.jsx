@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useFavoriteStore } from "../../../hooks/useFavoriteStore";
 
-export const FavoriteCard = ({ favorite, startDeleteFavoriteInUser }) => {
+export const FavoriteCard = ({ favorite }) => {
   const navigate = useNavigate();
   const [isRemoving, setIsRemoving] = useState(false);
   const [progress, setProgress] = useState(100);
 
+  const { startDeleteFavoriteInUser } = useFavoriteStore()
   const { productId, principalImage, name, price, category, discount } = favorite;
 
   const handleCardClick = () => {

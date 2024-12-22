@@ -10,6 +10,7 @@ import { FavoritesPage } from "../pages/favorites/FavoritesPage";
 import { LoginPage } from "../auth/pages/LoginPage";
 import { RegisterPage } from "../auth/pages/RegisterPage";
 import { LandingPage } from "../pages/landing/LandingPage";
+import { ProfilePage } from "../pages/profile/ProfilePage";
 
 
 
@@ -22,9 +23,8 @@ export function AppRouter() {
 
   useEffect(() => {
     checkAuthToken();
-  }, []);
+  }, [status]);
 
-  // Muestra una página de carga mientras se verifica el estado de autenticación
   if (status === "checking") {
     return <SpinnerPage />;
   }
@@ -53,6 +53,8 @@ export function AppRouter() {
                 <Route path="/bag" element={<ShoppingCartPage />}/>
                 <Route path="/women" element={<WomenPage />}/>
                 <Route path="/favorites" element={<FavoritesPage />}/>
+                <Route path="/profile" element={<ProfilePage />}/>
+                <Route path="/profile/favorites" element={<ProfilePage />}/>
 
       </Routes>
 

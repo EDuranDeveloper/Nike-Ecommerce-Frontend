@@ -10,7 +10,7 @@ import { getTotalPrice } from "./helpers/getTotalPrice";
 
 export function ShoppingCartPage() {
 
-  const { cartUser, loading, errorMessage, startGetCartUser, startPostCartInUser } = useCartStore()
+  const { cartUser, loading, errorMessage, startGetCartUser, startPostCartInUser, startDeleteProductInCart } = useCartStore()
 
   useEffect(() => {
     startGetCartUser()
@@ -34,7 +34,7 @@ export function ShoppingCartPage() {
   const { totalWithDiscount, totalDiscount } = getTotalPrice({ items })
 
   return (
-    <div className="container mx-auto p-16 m-16">
+    <div className="container mx-auto p-16 px-32 m-16">
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8">
         <div>
           <Navbar bgColor="white" />
@@ -46,7 +46,7 @@ export function ShoppingCartPage() {
             <ShoppingCart key={product.productId} product={product}  />
           ))}
 
-          <Favorites startPostCartInUser={startPostCartInUser}/>
+          <Favorites items={items} startPostCartInUser={startPostCartInUser} startDeleteProductInCart={startDeleteProductInCart}/>
         </div>
         <div>
           <Summary items={items} totalWithDiscount={totalWithDiscount} totalDiscount={totalDiscount}/>

@@ -7,14 +7,13 @@ export function useFavoriteStore() {
         const dispatch = useDispatch()
         const { loading, favorites, error } = useSelector(state => state.favorites )
         const { user } = useSelector(state => state.auth)
-        const { uid } = user
 
     const startGetFavorites = async() => {
 
         dispatch( setLoading() )    
 
         try {
-            const { data } = await favoriteApi.get(`/favorites/${ uid }`);
+            const { data } = await favoriteApi.get(`/favorites/${ user.uid }`);
             const { items } = data.favorites; 
 
             dispatch( setFavorites( items ) ); 
@@ -41,10 +40,10 @@ export function useFavoriteStore() {
 
     }
 
-    const startDeleteFavoriteInUser = async( currentProductId ) => {
+    const startDeleteFavoriteInUser = async( productId ) => {
         try {
-            dispatch( removeFavorite( currentProductId ) )
-            await favoriteApi.delete(`/favorites/${user.uid}/${currentProductId}/remove`);
+            dispatch( removeFavorite( productId ) )
+            await favoriteApi.delete(`/favorites/${user.uid}/${productId}/remove`);
               
         } catch (error) {
             console.log(error);

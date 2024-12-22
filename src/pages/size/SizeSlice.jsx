@@ -30,9 +30,9 @@ export function SizeSlice({ currentProduct }) {
 
 
   return (
-    <div className="flex flex-col lg:flex-row bg-white mx-auto rounded-xl justify-between p-8 mt-6">
+    <div className="flex flex-col lg:flex-row bg-white mx-auto rounded-xl justify-between p-8 mt-6 ">
       {/* Image Carousel */}
-      <div className="flex gap-2 lg:gap-4">
+      <div className="flex gap-2 lg:gap-4 overflow-scroll md:overflow-hidden">
         {currentProduct.secondaryImages.map((image, i) => (
           <img
             onClick={() => handleModalImage(image)}

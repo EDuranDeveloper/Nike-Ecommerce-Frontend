@@ -42,10 +42,12 @@ export function useCartStore() {
 
     } 
 
-    const startDeleteProductInCart = async( currentProductId ) => {
+    const startDeleteProductInCart = async( productId ) => {
+
+        console.log(user.uid );
 
         try {
-            await cartApi.delete(`/cart/${user.uid}/${currentProductId}/remove`);
+            await cartApi.delete(`/cart/${user.uid}/${productId}/remove`);
 
             // Swal.fire({
             //     title: "Remove item!",
@@ -56,8 +58,8 @@ export function useCartStore() {
               
         } catch (error) {
             console.error("Error add product:", error);
-            dispatch( onErrorCart(error) )
-            throw error; 
+            // dispatch( onErrorCart(error) )
+            // throw error; 
         } 
         finally {
             await startGetCartUser();

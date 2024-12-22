@@ -46,6 +46,8 @@ export function useAuthStore() {
             
             dispatch( onLogin( { name: data.name, uid: data.uid } ) )
 
+            console.log("Register:", data?.uid);
+
             Swal.fire({ title: "Good job!", text: "You are register now!", icon: "success" });
 
         } catch (error) {
@@ -62,6 +64,7 @@ export function useAuthStore() {
         
         try {
             const { data } = await authApi.get("/auth/renew")
+             
             localStorage.setItem('token', data.token );
             localStorage.setItem('token-init-date', new Date().getTime() );
             dispatch( onLogin({ name: data.name, uid: data.uid }) );
@@ -73,6 +76,11 @@ export function useAuthStore() {
             dispatch( onLogout() )
         }
 
+    }
+
+    const startLogout = () => {
+        localStorage.clear()
+        dispatch( onLogout() )
     }
  
  
@@ -86,6 +94,7 @@ export function useAuthStore() {
         //Metodos
         startLogin,
         startRegister,
+        startLogout,
         checkAuthToken,
     }
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useFavoriteStore } from "../../hooks/useFavoriteStore";
 
-export const Favorites = ({ startPostCartInUser }) => {
+export const Favorites = ({ items, startPostCartInUser, startDeleteProductInCart }) => {
   const { favorites, startGetFavorites } = useFavoriteStore();
   const [showAll, setShowAll] = useState(false);
 
@@ -12,7 +12,11 @@ export const Favorites = ({ startPostCartInUser }) => {
   const displayedFavorites = showAll ? favorites : favorites.slice(0, 3);
 
   const onAddToCart = (productId) => {
-    startPostCartInUser(productId);
+    if (items.some((item) => item.productId === productId)) {
+      startDeleteProductInCart(productId)
+    } else {
+      startPostCartInUser(productId);
+    }
   };
 
   return (
@@ -32,6 +36,7 @@ export const Favorites = ({ startPostCartInUser }) => {
               />
               <h3 className="font-bold">{favorite.name}</h3>
               <p className="text-gray-600">{favorite.description}</p>
+
 
               <div className="flex items-center mt-2 ">
                 {favorite.discount > 0 ? (
@@ -61,7 +66,7 @@ export const Favorites = ({ startPostCartInUser }) => {
                 onClick={() => onAddToCart(favorite.productId)}
                 className="mt-2 bg-gray-300 text-gray-950 px-2 py-2 rounded-full w-full md:text-sm"
               >
-                Add to Cart
+                {items?.some((item) => item.productId === favorite.productId) ? "Delete to cart" : "Add to Cart"}
               </button>
             </div>
           ))
@@ -72,7 +77,6 @@ export const Favorites = ({ startPostCartInUser }) => {
         )}
       </div>
 
-      {/* Botón para mostrar más/menos favoritos */}
       <div className="mt-2 flex justify-between">
         <div>
           {favorites.length > 3 && (

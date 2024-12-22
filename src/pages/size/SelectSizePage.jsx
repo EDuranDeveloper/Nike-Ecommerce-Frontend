@@ -60,10 +60,10 @@ export function SelectSizePage() {
   const { category, name, description, principalImage } = currentProduct;
   
   return (
-    <div className="h-screen bg-white flex flex-col p-5 md:overflow-hidden">
-      <Navbar />
+    <div className="h-screen bg-[#F6F6F6] flex flex-col md:pt-6 pt-24">
+      <Navbar bgColor="[#F6F6F6]"/>
 
-      <div className="flex-grow w-full mx-auto bg-[#F6F6F6] rounded-lg shadow-lg flex flex-col px-4 lg:px-6">
+      <div className="flex-grow w-full mx-auto bg-[#F6F6F6] rounded-lg shadow-lg flex flex-col lg:px-6">
         {/* Mid Section */}
         <div className="flex flex-col lg:flex-row items-center justify-center h-full">
           {/* Text Section */}

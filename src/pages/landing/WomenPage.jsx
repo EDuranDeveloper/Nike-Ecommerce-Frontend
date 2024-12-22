@@ -42,7 +42,7 @@ export function WomenPage() {
         {/* Image Section */}
         <section className="md:ml-36 lg:ml-0 relative flex items-center justify-center h-[400px] lg:h-[600px] bg-[#d5cfcc] md:bg-transparent shadow-lg rounded-lg md:shadow-none md:rounded-none">
           <img
-            className="transform md:rotate-[-49deg] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:max-w-[100vw] lg:max-w-none h-auto 2xl:mt-48 4xl:mt-56 md:z-30 md:pb-24 delay-100 md:transition-transform duration-300 ease-in-out md:hover:translate-y-[-500px]"
+            className="transform md:rotate-[-49deg] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:max-w-[100vw] lg:max-w-none h-auto 2xl:mt-48 4xl:mt-56 md:z-30 md:pb-24 delay-100 md:transition-transform duration-300 ease-in-out "
             src="/Woman.png"
             alt="Nike Image"
           />
@@ -52,17 +52,17 @@ export function WomenPage() {
       {/* Fixed Image Gallery */}
       <div className="md:fixed bottom-0 left-0 w-full bg-[#ded7d2] rounded-lg shadow-lg flex md:justify-start justify-center items-center md:overflow-hidden p-4 gap-4 mt-8">
         <img
-          className="md:size-48 h-24 object-cover rounded-lg"
+          className="md:size-48 h-24 rounded-lg"
           src="/NikeWoman1.jpeg"
           alt="Nike Image 1"
         />
         <img
-          className="md:size-48 h-24 object-cover rounded-lg"
+          className="md:size-48 h-24 rounded-lg"
           src="/NikeWoman2.png"
           alt="Nike Image 2"
         />
         <img
-          className="md:size-48 h-24 object-cover rounded-lg"
+          className="md:size-48 h-24 rounded-lg"
           src="/NikeWoman3.png"
           alt="Nike Image 3"
         />

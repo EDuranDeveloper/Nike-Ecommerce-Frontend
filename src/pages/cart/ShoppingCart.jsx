@@ -22,7 +22,7 @@ export const ShoppingCart = ({ product }) => {
 
   const handleAddFavorite = () => {
     if (isFavorite) {
-      startDeleteFavoriteInUser(productId)
+      startDeleteFavoriteInUser( productId )
     } else {
       startPostFavoriteInUser( productId )
     }
