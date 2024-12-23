@@ -14,7 +14,7 @@ export function Navbar({ navBarPad, bgColor = "transparent" }) {
 
   const onClickAccount = () => {
     if (user.uid) {
-      navigate("/profile/favorites");
+      navigate("/profile");
     } else {
       navigate("/auth/login");
     }

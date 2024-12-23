@@ -54,7 +54,7 @@ export function AppRouter() {
                 <Route path="/women" element={<WomenPage />}/>
                 <Route path="/favorites" element={<FavoritesPage />}/>
                 <Route path="/profile" element={<ProfilePage />}/>
-                <Route path="/profile/favorites" element={<ProfilePage />}/>
+                <Route path="/profile/" element={<ProfilePage />}/>
 
       </Routes>
 
