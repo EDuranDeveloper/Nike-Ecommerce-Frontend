@@ -3,9 +3,9 @@ export function NavbarProfile({ section, setSection }) {
   
   const sections = [
     "Favorites",
-    "Orders",
     "Account settings",
     "Delivery addresses",
+    "Orders",
     "Payment methods",
   ];
 

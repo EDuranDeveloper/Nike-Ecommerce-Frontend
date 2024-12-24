@@ -5,6 +5,8 @@ import { Favorites } from "./components/Favorites";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import { NavbarProfile } from "./components/NavbarProfile";
 import Orders from "./components/Orders";
+import { Account } from "./components/Account";
+import { AddresDelivery } from "./components/AddresDelivery";
 
 export function ProfilePage() {
   const [section, setSection] = useState("Favorites")
@@ -19,9 +21,9 @@ export function ProfilePage() {
     <div className="min-h-screen bg-gray-50 pt-24">
       <Navbar bgColor="gray-50" />
       <NavbarProfile section={section} setSection={setSection}/>
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 py-6">
         {/* Profile Section */}
-        <div className="flex items-center space-x-4 mb-12">
+        <div className="flex items-center space-x-4 mb-6">
           <img
             className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center"
           />
@@ -34,6 +36,8 @@ export function ProfilePage() {
         {/* Favorites Section */}
         {section === "Favorites" && <Favorites favorites={favorites} setSection={setSection} />}
         {section === "Orders" && <Orders />}
+        {section === "Account settings" && <Account />}
+        {section === "Delivery addresses" && <AddresDelivery />}
 
 
           {/* Next */}
