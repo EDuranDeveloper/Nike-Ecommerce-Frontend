@@ -30,7 +30,7 @@ export function AddresDelivery() {
         <div className="w-full bg-white rounded-lg shadow-sm p-6">
           <div className="space-y-8">
             <h1 className="text-2xl font-semibold text-gray-900 mb-6">
-              Delivery addresses save
+              Addresses save
             </h1>
             
 

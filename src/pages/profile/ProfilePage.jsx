@@ -33,7 +33,7 @@ export function ProfilePage() {
           </div>
         </div>
 
-        {/* Favorites Section */}
+        {/* Sections */}
         {section === "Favorites" && <Favorites favorites={favorites} setSection={setSection} />}
         {section === "Orders" && <Orders />}
         {section === "Account settings" && <Account />}
