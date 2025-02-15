@@ -18,14 +18,14 @@ export function ProfilePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-24">
+    <div className=" bg-gray-50 pt-24 min-h-screen">
       <Navbar bgColor="gray-50" />
       <NavbarProfile section={section} setSection={setSection}/>
-      <div className="max-w-7xl mx-auto px-4 py-6">
+      <div className="max-w-7xl mx-auto px-4 py-6 ">
         {/* Profile Section */}
-        <div className="flex items-center space-x-4 mb-6">
+        <div className="flex flex-col md:flex-row items-center justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-4 mb-6">
           <img
-            className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center"
+            className="md:size-16 size-48 bg-gray-200 rounded-full items-center justify-center"
           />
           <div>
             <h1 className="text-2xl font-bold">{user.name}</h1>

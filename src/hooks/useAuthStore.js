@@ -17,7 +17,7 @@ export function useAuthStore() {
             
             localStorage.setItem('token', data.token )
             localStorage.setItem('token-init-date', new Date().getTime() )
-            dispatch ( onLogin({ name: data.name, uid: data.uid }) )
+            dispatch ( onLogin({ name: data.name, email: data.email, uid: data.uid }) )
             
             Swal.fire({ title: "Welcome!", text: "You are login now!", icon: "success" });
 
@@ -44,7 +44,7 @@ export function useAuthStore() {
             localStorage.setItem('token', data.token )
             localStorage.setItem('token-init-date', new Date().getTime() )
             
-            dispatch( onLogin( { name: data.name, uid: data.uid } ) )
+            dispatch( onLogin( { name: data.name, email: data.email, uid: data.uid } ) )
 
             console.log("Register:", data?.uid);
 
@@ -67,7 +67,7 @@ export function useAuthStore() {
              
             localStorage.setItem('token', data.token );
             localStorage.setItem('token-init-date', new Date().getTime() );
-            dispatch( onLogin({ name: data.name, uid: data.uid }) );
+            dispatch( onLogin({ name: data.name, email: data.email, uid: data.uid }) );
 
             
         } catch (error) {

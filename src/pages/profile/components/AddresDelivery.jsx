@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { AddresDeliveryCard } from "./AddresDeliveryCard";
+import { Modal } from "./modal/modal";
 
 
 export function AddresDelivery() {
+
   const addresses = [
     {
       id: 1,
@@ -28,7 +31,7 @@ export function AddresDelivery() {
       </h1>
       <div className="bg-gray-50 flex items-center justify-center">
         <div className="w-full bg-white rounded-lg shadow-sm p-6">
-          <div className="space-y-8">
+          <div>
             <h1 className="text-2xl font-semibold text-gray-900 mb-6">
               Addresses save
             </h1>
@@ -41,11 +44,7 @@ export function AddresDelivery() {
               ))}
             </div>
 
-            <div className="flex justify-end">
-              <button className="px-6 py-2 bg-black text-white rounded-xl">
-                Add new address
-              </button>
-            </div>
+            
           </div>
         </div>
       </div>

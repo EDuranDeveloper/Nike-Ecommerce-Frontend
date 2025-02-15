@@ -2,10 +2,18 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { countries } from "../helpers/countryLibrary";
 import { useAccountSettingsStore } from "../../../hooks/useAccountSettingsStore";
+import Swal from "sweetalert2";
+import { useSelector } from "react-redux";
+import { Modal } from "./modal/modal";
 
 export function Account() {
+
+  const { status, user, errorMessage } = useSelector(state => state.auth )
   const { startGetAccountSettingsUser, startPostAccountSettingsUser } = useAccountSettingsStore();
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,10 +31,20 @@ export function Account() {
     };
 
     fetchData();
-  }, [startGetAccountSettingsUser, setValue]);
+  }, [setValue]);
 
   const onSubmit = async (data) => {
     startPostAccountSettingsUser(data);
+
+
+
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Your information is saved",
+      showConfirmButton: false,
+      timer: 1000
+    });
   };
 
   return (
@@ -42,10 +60,10 @@ export function Account() {
               </label>
               <input
                 type="email"
-                value="eliasdejesusduransanchez2019@gmail.com"
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 readOnly
                 disabled
+                value={user?.email}
               />
             </div>
 
@@ -78,6 +96,12 @@ export function Account() {
                 readOnly
                 disabled
               />
+            </div>
+
+            <div className="flex justify-end">
+              <button type="button" className="text-black hover:text-gray-800 text-xs underline" 
+              onClick={() => {setIsModalOpen(true)}}>Change phone</button>
+            <Modal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)}></Modal>
             </div>
 
             {/* Birth Date Field */}
